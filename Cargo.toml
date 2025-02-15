@@ -7,15 +7,15 @@ license = "MIT OR Apache-2.0"
 name = "exrs"
 edition = "2021"
 readme = "README.md"
-repository = "https://github.com/zhenpingfeng/exrs"
+repository = "https://github.com/jifengthu/exrs"
 version = "0.1.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-codec = "0.5.2"
-actix-rt = "2.5.0"
-awc = { version = "3.0.0-beta.11", features = ["rustls"] }
+actix-rt = "2.7.0"
+actix-codec = "0.5.2"  # 固定到 0.5.2 版本
+awc = "3.0.0"
 base64 = "0.13.0"
 bytes = "1.1.0"
 chrono = "0.4.19"
