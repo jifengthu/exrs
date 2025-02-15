@@ -41,3 +41,6 @@ thiserror = "1.0.30"
 tokio = { version = "1.14.0", features = ["full"] }
 url = "2.2.2"
 uuid = { version = "0.8.2", features = ["serde", "v4"] }
+
+[patch.crates-io]
+actix-codec = "0.5.2"
