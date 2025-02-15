@@ -154,6 +154,7 @@ impl<WE: serde::de::DeserializeOwned + std::fmt::Debug> FuturesWebSockets<WE> {
                             }
                             Frame::Ping(_) => {
                                 socket.send(Message::Pong(Bytes::from_static(b""))).await?;
+                                socket.flush().await?;  // 添加 flush 调用
                             }
                             Frame::Pong(_) | Frame::Binary(_) | Frame::Continuation(_) => {}
                             Frame::Close(e) => {

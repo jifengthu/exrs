@@ -68,6 +68,7 @@ impl<WE: serde::de::DeserializeOwned + std::fmt::Debug> WebSockets<WE> {
     pub async fn subscribe_request(&mut self, request: &str) -> Result<()> {
         if let Some((_, ref mut socket)) = self.socket {
             socket.send(Message::Text(request.into())).await?;
+            socket.flush().await?;  // 添加 flush 调用
             Ok(())
         } else {
             Err(Error::Msg("Not able to send requests".to_string()))
@@ -78,6 +79,7 @@ impl<WE: serde::de::DeserializeOwned + std::fmt::Debug> WebSockets<WE> {
     pub async fn disconnect(&mut self) -> Result<()> {
         if let Some((_, ref mut socket)) = self.socket {
             socket.close().await?;
+            socket.flush().await?;  // 添加 flush 调用
             Ok(())
         } else {
             Err(Error::Msg("Not able to close the connection".to_string()))
